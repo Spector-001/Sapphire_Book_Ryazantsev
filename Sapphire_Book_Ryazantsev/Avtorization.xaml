@@ -1,0 +1,66 @@
+﻿<Window x:Class="Sapphire_Book_Ryazantsev.Avtorization"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sapphire_Book_Ryazantsev"
+        mc:Ignorable="d"
+           Title="Sapphire Book"  Height="450" Width="800"  WindowStartupLocation="CenterScreen">
+
+
+
+    <Grid>
+        <!-- Определение строк -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+
+
+
+        <!-- Надпись Sapphire Book -->
+        <Label Content="Sapphire Book" 
+               Style="{StaticResource label}" 
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Center" 
+               Name="lblSapphireBook" 
+               Opacity="0" 
+               RenderTransformOrigin="0.5, 0.5">
+            <Label.RenderTransform>
+                <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
+            </Label.RenderTransform>
+        </Label>
+
+        <!-- Панель для ввода логина и пароля -->
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Name="loginPanel" 
+                    Opacity="0">
+            <Label Content="Введите Login" Style="{StaticResource LABEL1}" />
+            <TextBox Text="" Style="{StaticResource T1}" Name="login" />
+            <Label Content="Введите Password" Style="{StaticResource LABEL1}" />
+            <PasswordBox Style="{StaticResource PasswordBox}" x:Name="psbPassword" />
+            <StackPanel Orientation="Horizontal" >
+                <Button Style="{StaticResource button}" Content="Войти" Click="Button_Click" />
+                <Button Style="{StaticResource button}" Content="Просмотр" Name="btnsmotr" Click="btnsmotr_Click" />
+            </StackPanel>
+        </StackPanel>
+
+        
+
+
+        <Grid.Background>
+            <VisualBrush>
+                <VisualBrush.Visual>
+                    <Grid>
+                        <Image Source="/Resources/Background2.png" Stretch="UniformToFill"/>
+                        <Rectangle Fill="Black" Opacity="0.5"/>
+                    </Grid>
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Grid.Background>
+    </Grid>
+
+
+
+
+</Window>
