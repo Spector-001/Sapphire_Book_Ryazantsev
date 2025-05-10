@@ -20,7 +20,7 @@
             </StackPanel>
         </WrapPanel>
 
-        <ListView x:Name="lwProducts" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" SelectionChanged="lwProducts_SelectionChanged">
+        <ListView x:Name="lwProducts" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto"  HorizontalContentAlignment="Center" SelectionChanged="lwProducts_SelectionChanged">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
@@ -43,13 +43,14 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
+
         <Grid.Background>
             <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="#FFD3CCEB" Offset="0"/>
                 <GradientStop Color="#FFF5F5F5" Offset="1"/>
             </LinearGradientBrush>
+            
         </Grid.Background>
-
+        
     </Grid>
 </Page>

@@ -106,7 +106,89 @@
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontFamily" Value="Impact"  />
             <Setter Property="FontStyle" Value="Italic" />
-
         </Style>
+        <Style x:Key="AnimatedImageStyle" TargetType="Image">
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Opacity" Value="0" />
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+
+            <Style.Triggers>
+
+                <!-- Анимация появления при загрузке -->
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <!-- Появление с увеличением масштаба -->
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0.8" />
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1.0" />
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0.8" />
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1.0" />
+                            </DoubleAnimationUsingKeyFrames>
+
+                            <!-- Плавное появление -->
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                             From="0" To="1" Duration="0:0:1" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
+                <!-- Анимация увеличения при наведении -->
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <!-- Легкое увеличение прозрачности -->
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                             To="1.1" Duration="0:0:0.2" />
+
+                            <!-- Увеличение масштаба X -->
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1.1" />
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.0" />
+                            </DoubleAnimationUsingKeyFrames>
+
+                            <!-- Увеличение масштаба Y -->
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1.1" />
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.0" />
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
+                <!-- Возврат к исходному состоянию при уводе курсора -->
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <!-- Восстановление прозрачности -->
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                             To="1" Duration="0:0:0.2" />
+
+                            <!-- Возврат масштаба X -->
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1.1" />
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.0" />
+                            </DoubleAnimationUsingKeyFrames>
+
+                            <!-- Возврат масштаба Y -->
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1.1" />
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.0" />
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
+            </Style.Triggers>
+        </Style>
+
+
+
     </Application.Resources>
 </Application>

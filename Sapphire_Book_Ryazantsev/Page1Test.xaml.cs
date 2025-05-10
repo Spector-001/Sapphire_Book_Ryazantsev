@@ -58,17 +58,17 @@ namespace Sapphire_Book_Ryazantsev
 
         private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // Получение текста из TextBox
+            
             string searchText = TBoxSearch.Text.Trim().ToLower();
 
-            // Фильтрация данных
+            
             var filtered = _allBooks.Where(book =>
                 book.Name.ToLower().Contains(searchText) || // Поиск по названию
                 book.Author.ToLower().Contains(searchText) || // Поиск по автору
                 book.Category.ToLower().Contains(searchText) // Поиск по категории
             );
 
-            // Обновление отфильтрованной коллекции
+            
             _filteredBooks.Clear();
             foreach (var book in filtered)
             {

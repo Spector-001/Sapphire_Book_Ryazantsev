@@ -130,6 +130,12 @@
   <data name="book_icon_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\book-icon-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ddd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ddd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExitLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExitLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Exit__2_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Exit (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -138,6 +144,9 @@
   </data>
   <data name="Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LogoOw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LogoOw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_1984" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1984.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

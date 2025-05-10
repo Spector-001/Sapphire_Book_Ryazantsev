@@ -25,46 +25,27 @@ namespace Sapphire_Book_Ryazantsev
         {
             InitializeComponent();
             Manager.MainFrame = FRM;
-            Loaded += MainWindow_Loaded;
+          
             this.WindowState = WindowState.Maximized;
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private void PlayFadeInAnimation(FrameworkElement element)
         {
-            // Создаем анимацию изменения прозрачности изображения
-            DoubleAnimation imageOpacityAnimation = new DoubleAnimation
+            if (element == null) return;
+
+            var storyboard = FindResource("ImageFadeIn") as Storyboard;
+            if (storyboard != null)
             {
-                From = 0,
-                To = 1,
-                Duration = TimeSpan.FromSeconds(1.5)
-            };
+                storyboard = storyboard.Clone(); // Чтобы можно было воспроизвести несколько раз
+                Storyboard.SetTarget(storyboard, element);
+                storyboard.Begin();
+            }
+        }
 
-            // Запускаем анимацию изменения прозрачности изображения
-            imgLogo.BeginAnimation(UIElement.OpacityProperty, imageOpacityAnimation);
-
-            // Создаем анимацию увеличения размера текста "Sapphire Book"
-            DoubleAnimation scaleAnimation = new DoubleAnimation
-            {
-                From = 0.5,
-                To = 1,
-                Duration = TimeSpan.FromSeconds(1.5)
-            };
-
-            // Анимация для надписи "Sapphire Book" (изменение прозрачности)
-            DoubleAnimation opacityAnimation = new DoubleAnimation
-            {
-                From = 0,
-                To = 1,
-                Duration = TimeSpan.FromSeconds(1.5)
-            };
-
-            // Применяем анимацию к надписи "Sapphire Book"
-            lblSapphireBook.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
-
-            // Масштабирование надписи "Sapphire Book"
-            ScaleTransform scaleTransform = (ScaleTransform)lblSapphireBook.RenderTransform;
-            scaleTransform.BeginAnimation(ScaleTransform.ScaleXProperty, scaleAnimation);
-            scaleTransform.BeginAnimation(ScaleTransform.ScaleYProperty, scaleAnimation);
+        private void OnContentRendered(object sender, EventArgs e)
+        {
+            PlayFadeInAnimation(imgLogo);
+           
         }
 
 
@@ -75,6 +56,10 @@ namespace Sapphire_Book_Ryazantsev
             FRM.Navigate(new Page1Test());
         }
 
+        private void Image_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
 

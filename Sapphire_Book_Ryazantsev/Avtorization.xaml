@@ -38,7 +38,7 @@
             <Label Content="Введите Login" Style="{StaticResource LABEL1}" />
             <TextBox Text="" Style="{StaticResource T1}" Name="login" />
             <Label Content="Введите Password" Style="{StaticResource LABEL1}" />
-            <PasswordBox Style="{StaticResource PasswordBox}" x:Name="psbPassword" />
+            <PasswordBox Style="{StaticResource PasswordBox}" x:Name="psbPassword"  />
             <StackPanel Orientation="Horizontal" >
                 <Button Style="{StaticResource button}" Content="Войти" Click="Button_Click" />
                 <Button Style="{StaticResource button}" Content="Просмотр" Name="btnsmotr" Click="btnsmotr_Click" />
