@@ -3,29 +3,88 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Sapphire_Book_Ryazantsev"
+      xmlns:local="clr-namespace:Sapphire_Book_Ryazantsev" 
       mc:Ignorable="d" 
             d:DesignHeight="450" d:DesignWidth="800"
       Title="client">
 
-    <Grid>
+
+
+    <Grid Grid.Row="1">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Поиск:" HorizontalAlignment="Center" Width="175" TextAlignment="Right"  Margin="5" Foreground="White"  FontFamily="Comic Sans MS" FontSize="15"  />
-                <TextBox Width="225" Name="TBoxSearch" TextChanged ="TBoxSearch_TextChanged"   />
-            </StackPanel>
+
+        <!-- Панель поиска -->
+        <WrapPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+            <TextBlock Text="Поиск:" 
+                   VerticalAlignment="Center"
+                   FontFamily="Comic Sans MS"
+                   Foreground="White"
+                   FontSize="20"
+                   Margin="5"/>
+            <TextBox Width="225" 
+                 Name="TBoxSearch" 
+                 TextChanged="TBoxSearch_TextChanged" 
+                 FontSize="20"
+                 Margin="5"/>
         </WrapPanel>
 
-        <ListView x:Name="lwProducts" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto"  HorizontalContentAlignment="Center" SelectionChanged="lwProducts_SelectionChanged">
+        <StackPanel Grid.Row="1" 
+                Orientation="Horizontal" 
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="10">
+            <Button x:Name="btnAddBook"
+                Content="Добавить книгу"
+                Click="btnAddBook_Click"
+                FontSize="20"
+                MinWidth="150"
+                Padding="10,5"
+                Margin="5,0"
+                Visibility="Visible"
+                Style="{DynamicResource AnimatedButtonStyle}"/>
+
+            <Button x:Name="btnEditBook"
+                Content="Редактировать"
+                Click="btnEdit_Click"
+                    FontSize="20"
+                MinWidth="150"
+                Padding="10,5"
+                Margin="5,0"
+                Visibility="Visible"
+                Style="{DynamicResource AnimatedButtonStyle}"/>
+
+            <Button x:Name="btnDeleteBook"
+                Content="Удалить"
+                Click="btnDelete_Click"
+                    FontSize="20"
+                MinWidth="150"
+                Padding="10,5"
+                Margin="5,0"
+                Visibility="Visible"
+                Style="{DynamicResource AnimatedButtonStyle}"/>
+        </StackPanel>
+
+
+
+
+
+        <!-- Список книг -->
+        <ListView x:Name="lwProducts" 
+              Grid.Row="2"
+              ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+              ScrollViewer.VerticalScrollBarVisibility="Auto"  
+              HorizontalContentAlignment="Center"
+              SelectionChanged="lwProducts_SelectionChanged">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="20" Width="400">
@@ -34,23 +93,53 @@
                             <RowDefinition Height="310"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Image Width="250" Source="{Binding ImagePath}" Grid.Row="1" Stretch="UniformToFill" HorizontalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center" TextAlignment="Center" Width="390" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="5 5" FontSize="26" Grid.Row="0"/>
-                        <TextBlock Text="{Binding Category}" Grid.Row="3" FontSize="14" HorizontalAlignment="Right"/>
-                        <TextBlock Text="{Binding Author}" Grid.Row="3" FontSize="14" HorizontalAlignment="Left"/>
+
+                        <CheckBox Grid.Row="0" Grid.Column="0" IsChecked="{Binding IsSelected}" />
+
+                        <!-- Название книги -->
+                        <TextBlock Text="{Binding Name}" 
+                               VerticalAlignment="Center" 
+                               TextAlignment="Center" 
+                               Width="390" 
+                               TextWrapping="Wrap" 
+                               HorizontalAlignment="Center" 
+                               Margin="5 5" 
+                               FontSize="26" 
+                               Grid.Row="0"/>
+
+                        <!-- Изображение книги -->
+                        <Image Width="250" 
+                           Source="{Binding ImageFullPath}" 
+                           Grid.Row="1" 
+                           Stretch="UniformToFill" 
+                           HorizontalAlignment="Center" 
+                           Margin="5"/>
+
+                        <!-- Автор и категория -->
+                        <TextBlock Text="{Binding Category}" 
+                               Grid.Row="2" 
+                               FontSize="14" 
+                               HorizontalAlignment="Right"/>
+                        <TextBlock Text="{Binding Author}" 
+                               Grid.Row="2" 
+                               FontSize="14" 
+                               HorizontalAlignment="Left"/>
+
+                       
+                      
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
+        <!-- Градиентный фон -->
         <Grid.Background>
-            <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="#FFD3CCEB" Offset="0"/>
                 <GradientStop Color="#FFF5F5F5" Offset="1"/>
             </LinearGradientBrush>
-            
         </Grid.Background>
-        
     </Grid>
 </Page>

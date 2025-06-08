@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace Sapphire_Book_Ryazantsev
 {
@@ -23,9 +25,8 @@ namespace Sapphire_Book_Ryazantsev
         public Avtorization()
         {
             InitializeComponent();
-            
+
             Loaded += Avtorization_Loaded;
-            
         }
 
         private void Avtorization_Loaded(object sender, RoutedEventArgs e)
@@ -70,7 +71,6 @@ namespace Sapphire_Book_Ryazantsev
         {
             try
             {
-                // Проверяем пользователя в базе данных
                 var UserLogin = DataBase1Entities.GetContext().Users.FirstOrDefault(x =>
                     x.Username == login.Text && x.Password == psbPassword.Password);
 
@@ -80,35 +80,48 @@ namespace Sapphire_Book_Ryazantsev
                 }
                 else
                 {
-                    switch (UserLogin.UserID)
+                    Properties.Settings.Default.CurrentUser = UserLogin.Username;
+                    Properties.Settings.Default.UserRole = UserLogin.Role; // Сохраняем роль из БД
+                    Properties.Settings.Default.Save();
+
+                    switch (UserLogin.Role)
                     {
-                        case 1:
-                            MessageBox.Show("Здравствуйте " + UserLogin.Username);
+                        case "Администратор":
                             MainWindow mainWindow = new MainWindow();
-                            mainWindow.Show(); // Открываем MainWindow
-                            this.Close(); // Закрываем окно авторизации
+                            mainWindow.Show();
+                            this.Close();
                             break;
 
-                        case 2:
-                            MessageBox.Show("Здравствуйте " + UserLogin.Username);
-
-                            
+                        case "Клиент":
+                            MainWindow mainWindowInstance = new MainWindow(); // Используем другое имя
+                            mainWindowInstance.Show();
+                            this.Close();
                             break;
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка: " + ex.Message + "\nКритическая ошибка приложения");
+                MessageBox.Show($"Ошибка: {ex.Message}");
             }
         }
 
         private void btnsmotr_Click(object sender, RoutedEventArgs e)
         {
-
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show(); // Открываем MainWindow
             this.Close(); // Закрываем окно авторизации
         }
+
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            // Открываем окно регистрации
+            RegistrationWindow registrationWindow = new RegistrationWindow();
+            registrationWindow.Show();
+
+            // Закрываем текущее окно авторизации
+            this.Close();
+        }
+
     }
 }

@@ -41,7 +41,7 @@
         <!-- Изображение книги и описание -->
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
             <Image Width="250" HorizontalAlignment="Left" 
-                   Source="{Binding ImagePath}" Grid.Row="1" 
+                   Source="{Binding ImageFullPath}" Grid.Row="1" 
                    Grid.Column="0" Stretch="UniformToFill"  
                    Margin="10"/>
             <TextBlock Text="{Binding Status}" FontSize="18" HorizontalAlignment="Center"/>

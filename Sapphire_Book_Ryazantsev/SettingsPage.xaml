@@ -1,0 +1,97 @@
+﻿<Page x:Class="Sapphire_Book_Ryazantsev.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Sapphire_Book_Ryazantsev"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SettingsPage">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+  
+
+        <!-- Выбор шрифта -->
+        <GroupBox Header="Шрифт текста" Margin="0,0,0,10">
+            <ComboBox x:Name="FontFamilySelector"
+          SelectedIndex="0"
+          SelectionChanged="FontFamilySelector_SelectionChanged">
+                <ComboBoxItem Content="Segoe UI" Tag="Segoe UI"/>
+                <ComboBoxItem Content="Arial" Tag="Arial"/>
+                <ComboBoxItem Content="Calibri" Tag="Calibri"/>
+                <ComboBoxItem Content="Georgia" Tag="Georgia"/>
+                <ComboBoxItem Content="Verdana" Tag="Verdana"/>
+                <ComboBoxItem Content="Tahoma" Tag="Tahoma"/>
+                <ComboBoxItem Content="Times New Roman" Tag="Times New Roman"/>
+                <ComboBoxItem Content="Comic Sans MS" Tag="Comic Sans MS"/>
+                <ComboBoxItem Content="Consolas" Tag="Consolas"/>
+                <ComboBoxItem Content="Roboto" Tag="Roboto"/>
+                <ComboBoxItem Content="Open Sans" Tag="Open Sans"/>
+                <ComboBoxItem Content="Lato" Tag="Lato"/>
+            </ComboBox>
+        </GroupBox>
+
+        <!-- Размер шрифта -->
+        <GroupBox Header="Размер шрифта" Margin="0,0,0,10" Grid.Row="1">
+            <ComboBox x:Name="FontSizeSelector" 
+                      SelectedIndex="2"
+                      SelectionChanged="FontSizeSelector_SelectionChanged">
+                <ComboBoxItem Content="Маленький (10pt)" Tag="10"/>
+                <ComboBoxItem Content="Обычный (12pt)" Tag="12"/>
+                <ComboBoxItem Content="Крупный (14pt)" Tag="14"/>
+                <ComboBoxItem Content="Очень крупный (16pt)" Tag="16"/>
+            </ComboBox>
+        </GroupBox>
+
+        <!-- Дополнительные функции -->
+        <GroupBox Header="Дополнительно" Margin="0,0,0,10" Grid.Row="2">
+            <StackPanel>
+                
+                <Button Content="Сбросить настройки"
+                        Width="150"
+                        Click="ResetSettings_Click"
+                        Margin="0,10,0,0"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Учётная запись" Margin="0,0,0,10" Grid.Row="4">
+            <StackPanel>
+                <!-- Информация о пользователе -->
+                <TextBlock x:Name="UserInfoText"
+                   Text="Не авторизован"
+                   FontSize="{DynamicResource UserFontSize}"
+                   Margin="0,0,0,10"/>
+
+                <!-- Кнопки -->
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Войти" 
+                    Width="120"
+                    Margin="0,0,5,0"
+                    Click="LoginButton_Click"/>
+                    <Button x:Name="LogoutButton"
+                    Content="Выйти" 
+                    Width="120"
+                    Click="LogoutButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- О программе -->
+        <GroupBox Header="О программе" Margin="0,0,0,10" Grid.Row="3">
+            <TextBlock Text="Sapphire Book v1.0 © 2025 Все права защищены Автор: Рязанцев Денис Александрович" 
+                       TextWrapping="Wrap"
+                       Margin="5"/>
+        </GroupBox>
+
+        <Frame Grid.Row="4" Name="FRM"/>
+
+    </Grid>
+</Page>

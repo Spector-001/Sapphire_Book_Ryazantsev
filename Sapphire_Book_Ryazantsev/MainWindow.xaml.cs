@@ -25,44 +25,52 @@ namespace Sapphire_Book_Ryazantsev
         {
             InitializeComponent();
             Manager.MainFrame = FRM;
-          
+
             this.WindowState = WindowState.Maximized;
+
+            var fontFamily = new FontFamily(Properties.Settings.Default.FontFamily);
+            var fontSize = Properties.Settings.Default.FontSize;
+
+            App.Current.Resources["UserFontFamily"] = fontFamily;
+            App.Current.Resources["UserFontSize"] = fontSize;
+
+            this.FontFamily = fontFamily;
+            this.FontSize = fontSize;
+
         }
-
-        private void PlayFadeInAnimation(FrameworkElement element)
-        {
-            if (element == null) return;
-
-            var storyboard = FindResource("ImageFadeIn") as Storyboard;
-            if (storyboard != null)
-            {
-                storyboard = storyboard.Clone(); // Чтобы можно было воспроизвести несколько раз
-                Storyboard.SetTarget(storyboard, element);
-                storyboard.Begin();
-            }
-        }
-
-        private void OnContentRendered(object sender, EventArgs e)
-        {
-            PlayFadeInAnimation(imgLogo);
-           
-        }
-
 
 
 
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            FRM.Navigate(new Page1Test());
+            string role = Properties.Settings.Default.UserRole;
+
+    if (role == "Администратор")
+    {
+        FRM.Navigate(new Page1Test("Admin"));
+    }
+    else
+    {
+        FRM.Navigate(new Page1Test());
+    }
         }
 
         private void Image_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
             this.Close();
         }
+
+        private void Image_MouseLeftButtonDown_3(object sender, MouseButtonEventArgs e)
+        {
+            FRM.Navigate(new SettingsPage());
+        }
+
+        private void Image_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
+        {
+            if (FRM.CanGoBack)
+            {
+                FRM.GoBack();
+            }
+        }
     }
 }
-
-
-
-

@@ -83,9 +83,9 @@ namespace Sapphire_Book_Ryazantsev.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Background2 {
+        internal static System.Drawing.Bitmap BackgroundI {
             get {
-                object obj = ResourceManager.GetObject("Background2", resourceCulture);
+                object obj = ResourceManager.GetObject("BackgroundI", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace Sapphire_Book_Ryazantsev.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap book_icon_2 {
+        internal static System.Drawing.Bitmap BackgroundOwn {
             get {
-                object obj = ResourceManager.GetObject("book_icon_2", resourceCulture);
+                object obj = ResourceManager.GetObject("BackgroundOwn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace Sapphire_Book_Ryazantsev.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap BookIcon {
+        internal static System.Drawing.Bitmap BackLogo {
             get {
-                object obj = ResourceManager.GetObject("BookIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("BackLogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -116,16 +116,6 @@ namespace Sapphire_Book_Ryazantsev.Properties {
         internal static System.Drawing.Bitmap ddd {
             get {
                 object obj = ResourceManager.GetObject("ddd", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Exit__2_ {
-            get {
-                object obj = ResourceManager.GetObject("Exit__2_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -166,6 +156,16 @@ namespace Sapphire_Book_Ryazantsev.Properties {
         internal static System.Drawing.Bitmap LogoOw {
             get {
                 object obj = ResourceManager.GetObject("LogoOw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LogoSettings {
+            get {
+                object obj = ResourceManager.GetObject("LogoSettings", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

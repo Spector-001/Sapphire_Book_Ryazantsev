@@ -11,7 +11,7 @@ namespace Sapphire_Book_Ryazantsev
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Books
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,27 +19,40 @@ namespace Sapphire_Book_Ryazantsev
         {
             this.OrderItems = new HashSet<OrderItems>();
         }
-
+    
         public int ProductID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Category { get; set; }
-        public string Image { get; set; }
+        public string ImagePath { get; set; }
         public string Author { get; set; }
         public string Genre { get; set; }
         public string Status { get; set; }
         public string Shelf { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderItems> OrderItems { get; set; }
-    
-    public string ImagePath
+
+        public bool IsSelected { get; set; }
+
+        public string ImageFullPath
         {
             get
             {
-                return $"/Resources/{Image}";
+                if (!string.IsNullOrEmpty(ImagePath))
+                {
+                    return $"/Resources/{ImagePath}";
+                }
+                return "/Resources/placeholder.png"; // Заглушка, если нет изображения
             }
         }
-    }
-}
 
+        // Метод для обновления изображения
+        public void UpdateImage(string newFileName)
+        {
+            ImagePath = newFileName;
+        }
+    }
+
+
+}

@@ -21,7 +21,7 @@
 
         <!-- Надпись Sapphire Book -->
         <Label Content="Sapphire Book" 
-               Style="{StaticResource label}" 
+               Style="{DynamicResource label}" 
                HorizontalAlignment="Center" 
                VerticalAlignment="Center" 
                Name="lblSapphireBook" 
@@ -35,13 +35,15 @@
         <!-- Панель для ввода логина и пароля -->
         <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Name="loginPanel" 
                     Opacity="0">
-            <Label Content="Введите Login" Style="{StaticResource LABEL1}" />
-            <TextBox Text="" Style="{StaticResource T1}" Name="login" />
-            <Label Content="Введите Password" Style="{StaticResource LABEL1}" />
-            <PasswordBox Style="{StaticResource PasswordBox}" x:Name="psbPassword"  />
+            <Label Content="Введите Login" Style="{DynamicResource LABEL1}" />
+            <TextBox Text="" Style="{DynamicResource T1}" Name="login" />
+            <Label Content="Введите Password" Style="{DynamicResource LABEL1}" />
+            <PasswordBox Style="{DynamicResource PasswordBox}" x:Name="psbPassword"  />
             <StackPanel Orientation="Horizontal" >
-                <Button Style="{StaticResource button}" Content="Войти" Click="Button_Click" />
-                <Button Style="{StaticResource button}" Content="Просмотр" Name="btnsmotr" Click="btnsmotr_Click" />
+                <Button Style="{DynamicResource button}" Content="Войти" Click="Button_Click" />
+                <Button Style="{DynamicResource button}" Content="Просмотр" Name="btnsmotr" Click="btnsmotr_Click" />
+                <Button Style="{DynamicResource button}" Content="Регистрация" Name="btnRegister" Click="btnRegister_Click"/>
+
             </StackPanel>
         </StackPanel>
 
@@ -52,7 +54,7 @@
             <VisualBrush>
                 <VisualBrush.Visual>
                     <Grid>
-                        <Image Source="/Resources/Background2.png" Stretch="UniformToFill"/>
+                        <Image Source="/Resources/BackgroundI.png" Stretch="UniformToFill"/>
                         <Rectangle Fill="Black" Opacity="0.5"/>
                     </Grid>
                 </VisualBrush.Visual>

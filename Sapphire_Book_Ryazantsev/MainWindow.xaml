@@ -29,11 +29,13 @@
                 <!-- Верхние элементы -->
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="10">
                     <Image Source="/Resources/LogoOw.png"
-                           Style="{StaticResource AnimatedImageStyle}"
-                           Name="imgLogo"
-                           Stretch="Uniform"
-                           Width="80"
-                           Height="100" />
+                    Style="{StaticResource AnimatedImageStyle}"
+                    Name="imgLogo"
+                    Stretch="Uniform"
+                    Width="80"
+                           Height="100"
+                           MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+                           
                     <Image Source="/Resources/ddd.png"
                            Style="{StaticResource AnimatedImageStyle}"
                            Width="80"
@@ -43,16 +45,38 @@
                            HorizontalAlignment="Left"/>
                 </StackPanel>
 
-                <!-- Кнопка Exit внизу -->
-                <Image Source="/Resources/ExitLogo.png"
-                       Style="{StaticResource AnimatedImageStyle}"
-                       Width="80"
-                       Height="100"
-                       Stretch="Uniform"
-                       MouseLeftButtonDown="Image_MouseLeftButtonDown_1"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Bottom"
-                       Margin="10"/>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10" >
+                    <Image Source="/Resources/LogoSettings.png"
+                    Style="{StaticResource AnimatedImageStyle}"
+                    Width="80"
+                    Height="100"
+                    Stretch="Uniform"
+                    MouseLeftButtonDown="Image_MouseLeftButtonDown_3"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    />
+
+                    <Image Source="/Resources/BackLogo.png"
+                    Style="{StaticResource AnimatedImageStyle}"
+                    Width="80"
+                    Height="100"
+                    Stretch="Uniform"
+                    MouseLeftButtonDown="Image_MouseLeftButtonDown_2"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    />
+
+                    
+                    <Image Source="/Resources/ExitLogo.png"
+                    Style="{StaticResource AnimatedImageStyle}"
+                    Width="80"
+                    Height="100"
+                    Stretch="Uniform"
+                    MouseLeftButtonDown="Image_MouseLeftButtonDown_1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                     />
+                </StackPanel>
             </Grid>
         </Border>
 

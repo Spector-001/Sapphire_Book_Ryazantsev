@@ -1,23 +1,32 @@
 ﻿<Application x:Class="Sapphire_Book_Ryazantsev.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Sapphire_Book_Ryazantsev"
-             StartupUri="Avtorization.xaml">
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style x:Key="button" TargetType="Button" >
+        <!-- Глобальные настройки -->
+        <FontFamily x:Key="UserFontFamily">Segoe UI</FontFamily>
+        <sys:Double x:Key="UserFontSize">12</sys:Double>
+
+        <!-- Стиль кнопок -->
+        <Style x:Key="button" TargetType="Button">
             <Setter Property="Width" Value="190" />
             <Setter Property="Height" Value="50" />
-            <Setter Property="FontSize" Value="25" />
             <Setter Property="Background" Value="{x:Null}" />
             <Setter Property="BorderBrush" Value="{x:Null}" />
             <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontFamily" Value="Bold" />
             <Setter Property="FontStyle" Value="Italic" />
+            <Setter Property="FontFamily" Value="{DynamicResource UserFontFamily}" />
+            <Setter Property="FontSize" Value="{DynamicResource UserFontSize}" />
             <Setter Property="ContentTemplate">
                 <Setter.Value>
                     <DataTemplate>
-
-                        <TextBlock Text="{Binding}" Foreground="White" FontSize="25" FontWeight="Bold" FontFamily="Italic">
+                        <TextBlock Text="{Binding}"
+                               Foreground="White"
+                               FontSize="{DynamicResource UserFontSize}"
+                               FontWeight="Bold"
+                               FontFamily="{DynamicResource UserFontFamily}">
                             <TextBlock.Effect>
                                 <DropShadowEffect Color="Black" ShadowDepth="3" BlurRadius="5"/>
                             </TextBlock.Effect>
@@ -25,21 +34,24 @@
                     </DataTemplate>
                 </Setter.Value>
             </Setter>
-
-
         </Style>
-        <Style x:Key="label" TargetType="Label" >
+
+        <!-- Стиль Label -->
+        <Style x:Key="label" TargetType="Label">
             <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="{DynamicResource UserFontFamily}" />
             <Setter Property="FontSize" Value="50"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="FontFamily" Value="Comic Sans MS"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="ContentTemplate">
                 <Setter.Value>
                     <DataTemplate>
-
-                        <TextBlock Text="{Binding}" Foreground="White" FontSize="50" FontWeight="Bold" FontFamily="Comic Sans MS">
+                        <TextBlock Text="{Binding}"
+                               Foreground="White"
+                               FontSize="50"
+                               FontWeight="Bold"
+                               FontFamily="{DynamicResource UserFontFamily}">
                             <TextBlock.Effect>
                                 <DropShadowEffect Color="Black" ShadowDepth="3" BlurRadius="5"/>
                             </TextBlock.Effect>
@@ -47,18 +59,29 @@
                     </DataTemplate>
                 </Setter.Value>
             </Setter>
-       
         </Style>
-        <Style x:Key="LABEL1" TargetType="Label"  >
+
+     
+   
+
+
+
+<!-- Другой стиль Label -->
+        <Style x:Key="LABEL1" TargetType="Label">
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontSize" Value="26"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="{DynamicResource UserFontFamily}" />
+            <Setter Property="FontSize" Value="26"/>
             <Setter Property="ContentTemplate">
                 <Setter.Value>
                     <DataTemplate>
-                        <TextBlock Text="{Binding}" Foreground="White" FontSize="26" FontWeight="Bold">
+                        <TextBlock Text="{Binding}"
+                               Foreground="White"
+                               FontSize="26"
+                               FontWeight="Bold"
+                               FontFamily="{DynamicResource UserFontFamily}">
                             <TextBlock.Effect>
                                 <DropShadowEffect Color="Black" ShadowDepth="2" BlurRadius="3"/>
                             </TextBlock.Effect>
@@ -67,47 +90,61 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Key="text1" TargetType="TextBlock" >
+
+        <!-- Текстблок -->
+        <Style x:Key="text1" TargetType="TextBlock">
             <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontSize" Value="30" />
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="{DynamicResource UserFontFamily}" />
+            <Setter Property="FontSize" Value="{DynamicResource UserFontSize}" />
         </Style>
-        <Style x:Key="T1" TargetType="TextBox" >
+
+        <!-- TextBox -->
+        <Style x:Key="T1" TargetType="TextBox">
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Height" Value="30" />
-            <Setter Property="Width"  Value="300"/>
-            <Setter Property ="Margin" Value="5" />
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Margin" Value="5" />
         </Style>
-        <Style TargetType="PasswordBox" x:Key="PasswordBox" >
+
+        <!-- PasswordBox -->
+        <Style TargetType="PasswordBox" x:Key="PasswordBox">
             <Setter Property="Height" Value="30" />
             <Setter Property="Width" Value="300" />
             <Setter Property="Margin" Value="5" />
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
-
         </Style>
-        <Style x:Key="Tb2" TargetType="ComboBox" >
+
+        <!-- ComboBox -->
+        <Style x:Key="Tb2" TargetType="ComboBox">
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Height" Value="50" />
-            <Setter Property="Width"  Value="300"/>
-            <Setter Property ="Margin" Value="5" />
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Margin" Value="5" />
             <Setter Property="Background" Value="White" />
         </Style>
-        <Style x:Key="button3" TargetType="Button" >
+
+        <!-- Кнопка 3 -->
+        <Style x:Key="button3" TargetType="Button">
             <Setter Property="Width" Value="200" />
             <Setter Property="Height" Value="60" />
-            <Setter Property="FontSize" Value="25" />
             <Setter Property="Background" Value="{x:Null}"/>
             <Setter Property="BorderBrush" Value="White" />
             <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontFamily" Value="Impact"  />
             <Setter Property="FontStyle" Value="Italic" />
-        </Style>
-        <Style x:Key="AnimatedImageStyle" TargetType="Image">
+            <Setter Property="FontFamily" Value="{DynamicResource UserFontFamily}" />
+            <Setter Property="FontSize" Value="{DynamicResource UserFontSize}" />
+            
+            </Style>
+
+
+
+            <Style x:Key="AnimatedImageStyle" TargetType="Image">
             <Setter Property="RenderTransform">
                 <Setter.Value>
                     <ScaleTransform ScaleX="1" ScaleY="1" />
@@ -116,8 +153,9 @@
             <Setter Property="Opacity" Value="0" />
             <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
 
-            <Style.Triggers>
 
+            <Style.Triggers>
+                
                 <!-- Анимация появления при загрузке -->
                 <EventTrigger RoutedEvent="Loaded">
                     <BeginStoryboard>
@@ -184,8 +222,79 @@
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
-
             </Style.Triggers>
+        </Style>
+
+        <Style x:Key="AnimatedButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="#333" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Padding" Value="10,5" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="6" BorderThickness="1" BorderBrush="#CCC">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#FFD3CCEB" Offset="0"/>
+                                    <GradientStop Color="#FFF5F5F5" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                      TextElement.FontWeight="Bold"
+                                      TextElement.Foreground="{TemplateBinding Foreground}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- Анимация при наведении -->
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Увеличение масштаба X -->
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1.1" />
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.0" />
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <!-- Увеличение масштаба Y -->
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1.1" />
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.0" />
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <!-- Легкое увеличение прозрачности -->
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="1.1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+
+                            <!-- Возврат к исходному состоянию при уводе курсора -->
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Восстановление прозрачности -->
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="1" Duration="0:0:0.2" />
+
+                                        <!-- Возврат масштаба X -->
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1.1" />
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.0" />
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <!-- Возврат масштаба Y -->
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1.1" />
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
 
