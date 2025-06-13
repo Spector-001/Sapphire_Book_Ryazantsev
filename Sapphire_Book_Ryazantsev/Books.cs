@@ -17,7 +17,7 @@ namespace Sapphire_Book_Ryazantsev
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Books()
         {
-            this.OrderItems = new HashSet<OrderItems>();
+            this.BookLoans = new HashSet<BookLoans>();
         }
     
         public int ProductID { get; set; }
@@ -25,14 +25,22 @@ namespace Sapphire_Book_Ryazantsev
         public string Description { get; set; }
         public string Category { get; set; }
         public string ImagePath { get; set; }
-        public string Author { get; set; }
-        public string Genre { get; set; }
         public string Status { get; set; }
-        public string Shelf { get; set; }
+        public Nullable<int> AuthorID { get; set; }
+        public Nullable<int> GenreID { get; set; }
+        public Nullable<int> ShelfID { get; set; }
     
+      
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderItems> OrderItems { get; set; }
+        public virtual ICollection<BookLoans> BookLoans { get; set; }
 
+
+        public string AuthorName => Author?.AuthorName;
+
+        public string ShelfLocation => Shelf?.ShelfLocation;
+
+
+        public string GenreName => Genre?.GenreName;
         public bool IsSelected { get; set; }
 
         public string ImageFullPath
@@ -43,16 +51,19 @@ namespace Sapphire_Book_Ryazantsev
                 {
                     return $"/Resources/{ImagePath}";
                 }
-                return "/Resources/placeholder.png"; // Заглушка, если нет изображения
+                return "/Resources/placeholder.png";
             }
         }
 
-        // Метод для обновления изображения
         public void UpdateImage(string newFileName)
         {
             ImagePath = newFileName;
         }
+
+        public virtual Author Author { get; set; }
+        public virtual Genre Genre { get; set; }
+        public virtual Shelf Shelf { get; set; }
     }
-
-
 }
+
+

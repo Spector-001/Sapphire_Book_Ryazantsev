@@ -17,7 +17,7 @@ namespace Sapphire_Book_Ryazantsev
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Users()
         {
-            this.OrderItems = new HashSet<OrderItems>();
+            this.BookLoans = new HashSet<BookLoans>();
         }
     
         public int UserID { get; set; }
@@ -26,6 +26,6 @@ namespace Sapphire_Book_Ryazantsev
         public string Role { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderItems> OrderItems { get; set; }
+        public virtual ICollection<BookLoans> BookLoans { get; set; }
     }
 }

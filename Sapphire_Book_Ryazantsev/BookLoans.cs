@@ -10,13 +10,18 @@
 namespace Sapphire_Book_Ryazantsev
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class sp_helpdiagrams_Result
+    public partial class BookLoans
     {
-        public string Database { get; set; }
-        public string Name { get; set; }
-        public int ID { get; set; }
-        public string Owner { get; set; }
-        public int OwnerID { get; set; }
+        public int LoanID { get; set; }
+        public int BookID { get; set; }
+        public int UserID { get; set; }
+        public System.DateTime LoanDate { get; set; }
+        public System.DateTime DueDate { get; set; }
+        public Nullable<System.DateTime> ReturnDate { get; set; }
+    
+        public virtual Books Books { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

@@ -12,20 +12,18 @@ namespace Sapphire_Book_Ryazantsev
     using System;
     using System.Collections.Generic;
     
-    public partial class Orders
+    public partial class Genre
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Orders()
+        public Genre()
         {
-            this.OrderItems = new HashSet<OrderItems>();
+            this.Books = new HashSet<Books>();
         }
     
-        public int OrderID { get; set; }
-        public int CustomerID { get; set; }
-        public Nullable<System.DateTime> OrderDate { get; set; }
-        public decimal Total { get; set; }
+        public int GenreID { get; set; }
+        public string GenreName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderItems> OrderItems { get; set; }
+        public virtual ICollection<Books> Books { get; set; }
     }
 }

@@ -13,6 +13,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Label Content="Введите логин:" Style="{DynamicResource LABEL1}" Grid.Row="0"/>
@@ -20,10 +22,13 @@
 
         <Label Content="Введите пароль:" Style="{DynamicResource LABEL1}" Grid.Row="2"/>
         <PasswordBox Name="txtPassword" Style="{DynamicResource PasswordBox}" Grid.Row="3"/>
-        <StackPanel Grid.Row="4">
+
+        <Label Content="Повторите пароль:" Style="{DynamicResource LABEL1}" Grid.Row="4"/>
+        <PasswordBox Name="txtConfirmPassword" Style="{DynamicResource PasswordBox}" Grid.Row="5"/>
+
+        <StackPanel Grid.Row="6">
             <Button Content="Зарегистрироваться" 
             Style="{DynamicResource button}" 
-            Grid.Row="4"
             Click="RegisterButton_Click"/>
         </StackPanel>
 

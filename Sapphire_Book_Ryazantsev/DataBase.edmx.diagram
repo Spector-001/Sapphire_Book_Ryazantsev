@@ -4,17 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="917359f4e4554b0f870d502848679baf" Name="Diagram1">
-        <EntityTypeShape EntityType="DataBase1EntitiesModel.Books" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataBase1EntitiesModel.OrderItems" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataBase1EntitiesModel.Orders" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataBase1EntitiesModel.Readers" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataBase1EntitiesModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataBase1EntitiesModel.Users" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
-        <AssociationConnector Association="DataBase1EntitiesModel.FK_OrderItems_Books" ManuallyRouted="false" />
-        <AssociationConnector Association="DataBase1EntitiesModel.FK_OrderItems_Orders" ManuallyRouted="false" />
-        <AssociationConnector Association="DataBase1EntitiesModel.FK_OrderItems_Readers" ManuallyRouted="false" />
-        <AssociationConnector Association="DataBase1EntitiesModel.FK_OrderItems_Users" ManuallyRouted="false" />
+      <Diagram DiagramId="758eb025a202436295dcaffa07b8a377" Name="Diagram1">
+        <EntityTypeShape EntityType="BookClubModel.Author" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookClubModel.BookLoans" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookClubModel.Books" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookClubModel.Genre" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookClubModel.Shelf" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookClubModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookClubModel.Users" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="BookClubModel.FK__Books__AuthorID__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="BookClubModel.FK__BookLoans__BookI__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="BookClubModel.FK__BookLoans__UserI__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="BookClubModel.FK__Books__GenreID__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="BookClubModel.FK__Books__ShelfID__3C69FB99" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

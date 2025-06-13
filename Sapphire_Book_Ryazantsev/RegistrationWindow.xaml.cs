@@ -28,47 +28,71 @@ namespace Sapphire_Book_Ryazantsev
         {
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Password.Trim();
+            string confirmPassword = txtConfirmPassword.Password.Trim();
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            // Проверка пустых полей
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
             {
-                MessageBox.Show("Логин и пароль не могут быть пустыми.");
+                MessageBox.Show("Все поля должны быть заполнены.");
+                return;
+            }
+
+            // Проверка минимальной длины пароля
+            if (password.Length < 6)
+            {
+                MessageBox.Show("Пароль должен содержать не менее 6 символов.");
+                return;
+            }
+            if (!System.Text.RegularExpressions.Regex.IsMatch(password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$"))
+            {
+                MessageBox.Show("Пароль должен содержать:\n- Не менее 6 символов\n- Заглавные и строчные буквы\n- Цифры");
+                return;
+            }
+
+
+            // Проверка совпадения паролей
+            if (password != confirmPassword)
+            {
+                MessageBox.Show("Пароли не совпадают. Пожалуйста, введите пароль еще раз.");
+                txtPassword.Password = "";
+                txtConfirmPassword.Password = "";
+                txtPassword.Focus();
                 return;
             }
 
             try
             {
-                // Проверяем, существует ли такой пользователь
-                var existingUser = DataBase1Entities.GetContext().Users.FirstOrDefault(u => u.Username == username);
+                var context = DataBase1Entities.GetContext();
 
-                if (existingUser != null)
+                // Проверка существующего пользователя
+                if (context.Users.Any(u => u.Username == username))
                 {
                     MessageBox.Show("Пользователь с таким логином уже существует.");
                     return;
                 }
 
-                // Создаем нового пользователя
+                // Создание нового пользователя
                 var newUser = new Users
                 {
                     Username = username,
-                    Password = password,
-                    Role = "Клиент" // Устанавливаем роль "Клиент" по умолчанию
+                    Password = password, // В реальном приложении пароль должен хэшироваться!
+                    Role = "Клиент"
                 };
 
-                DataBase1Entities.GetContext().Users.Add(newUser);
-                DataBase1Entities.GetContext().SaveChanges();
+                context.Users.Add(newUser);
+                context.SaveChanges();
 
-                MessageBox.Show("Вы успешно зарегистрированы!");
+                MessageBox.Show("Регистрация прошла успешно!");
 
-                // Переход к главному окну
+                // Переход на главное окно
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
-                this.Close(); // Закрываем окно регистрации
+                this.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка регистрации: {ex.Message}");
             }
-
         }
     }
 }

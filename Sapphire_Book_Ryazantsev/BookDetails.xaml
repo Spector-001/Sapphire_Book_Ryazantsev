@@ -9,8 +9,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -18,36 +17,49 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Заголовок с именем книги и автором -->
+        <!-- Левая колонка (изображение и информация) -->
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
+            <Image Width="250" HorizontalAlignment="Center" 
+                   Source="{Binding ImageFullPath}"
+                   Stretch="UniformToFill"  
+                   Margin="10"/>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,10">
+                <TextBlock Text="{Binding Status}" 
+                           FontSize="18" 
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding ShelfLocation}" 
+                           FontSize="18" 
+                           HorizontalAlignment="Center"/>
+
+                
+                   
+                
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Правая колонка (описание) -->
         <StackPanel Grid.Row="0" Grid.Column="1" 
                     Orientation="Vertical" 
                     HorizontalAlignment="Left" 
-                    VerticalAlignment="Top"  >
+                    VerticalAlignment="Top">
             <TextBlock Text="{Binding Name}" 
                        FontSize="24" 
                        FontWeight="Bold" 
                        HorizontalAlignment="Center"/>
-            <TextBlock Text="{Binding Author}" 
-            FontSize="24" 
-            FontWeight="Bold" 
-            HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding AuthorName}" 
+                       FontSize="24" 
+                       FontWeight="Bold" 
+                       HorizontalAlignment="Center"/>
             <TextBox Text="{Binding Description}" 
-                     FontSize="15" FontWeight="Bold"  
-                     Grid.Row="2" 
+                     FontSize="15" 
+                     FontWeight="Bold"  
                      HorizontalAlignment="Left"  
-                     TextWrapping="Wrap" />
+                     TextWrapping="Wrap"
+                     Margin="0,10"
+                     BorderThickness="0"
+                     Background="Transparent"
+                     IsReadOnly="True"/>
         </StackPanel>
-
-        <!-- Изображение книги и описание -->
-        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
-            <Image Width="250" HorizontalAlignment="Left" 
-                   Source="{Binding ImageFullPath}" Grid.Row="1" 
-                   Grid.Column="0" Stretch="UniformToFill"  
-                   Margin="10"/>
-            <TextBlock Text="{Binding Status}" FontSize="18" HorizontalAlignment="Center"/>
-            <TextBlock Text="{Binding Shelf}" FontSize="18" HorizontalAlignment="Center"/>
-        </StackPanel>
-        
-       
     </Grid>
 </Window>

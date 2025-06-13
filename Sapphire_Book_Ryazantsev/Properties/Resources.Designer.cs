@@ -173,6 +173,36 @@ namespace Sapphire_Book_Ryazantsev.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Nactolgia228 {
+            get {
+                object obj = ResourceManager.GetObject("Nactolgia228", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Акира {
+            get {
+                object obj = ResourceManager.GetObject("Акира", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap АтакаТитановjpg {
+            get {
+                object obj = ResourceManager.GetObject("АтакаТитановjpg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Берсерк {
             get {
                 object obj = ResourceManager.GetObject("Берсерк", resourceCulture);
@@ -193,6 +223,26 @@ namespace Sapphire_Book_Ryazantsev.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Дюна {
+            get {
+                object obj = ResourceManager.GetObject("Дюна", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ИграПрестолов {
+            get {
+                object obj = ResourceManager.GetObject("ИграПрестолов", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap КоллекцияУжасовДзюндзиИто {
             get {
                 object obj = ResourceManager.GetObject("КоллекцияУжасовДзюндзиИто", resourceCulture);
@@ -206,6 +256,16 @@ namespace Sapphire_Book_Ryazantsev.Properties {
         internal static System.Drawing.Bitmap МастериМаргарита {
             get {
                 object obj = ResourceManager.GetObject("МастериМаргарита", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Наруто {
+            get {
+                object obj = ResourceManager.GetObject("Наруто", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +303,9 @@ namespace Sapphire_Book_Ryazantsev.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ТетрадьСмерти {
+        internal static System.Drawing.Bitmap ТетрадьСмерти1 {
             get {
-                object obj = ResourceManager.GetObject("ТетрадьСмерти", resourceCulture);
+                object obj = ResourceManager.GetObject("ТетрадьСмерти1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

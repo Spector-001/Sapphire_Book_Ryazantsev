@@ -19,10 +19,36 @@ namespace Sapphire_Book_Ryazantsev
     /// </summary>
     public partial class BookDetails : Window
     {
-        public BookDetails (Sapphire_Book_Ryazantsev.Books book) 
+  
+        public BookDetails(Books book)
         {
             InitializeComponent();
+
+            // Загружаем связанные данные, если они не загружены
+            if (book.Author == null || book.Genre == null || book.Shelf == null)
+            {
+                var context = DataBase1Entities.GetContext();
+                context.Entry(book).Reference(b => b.Author).Load();
+                context.Entry(book).Reference(b => b.Genre).Load();
+                context.Entry(book).Reference(b => b.Shelf).Load();
+            }
+
             DataContext = book;
         }
-    }
-}
+
+
+        
+          
+
+        private void btnTakeBook_Click(object sender, RoutedEventArgs e)
+        {
+           
+                }
+            }
+        }
+    
+
+
+    
+    
+

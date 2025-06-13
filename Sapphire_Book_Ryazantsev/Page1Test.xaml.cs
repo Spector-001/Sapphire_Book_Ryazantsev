@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Data.Entity;
 
 
 namespace Sapphire_Book_Ryazantsev
@@ -30,6 +31,7 @@ namespace Sapphire_Book_Ryazantsev
         public Page1Test() : this(null)
         {
             InitializeComponent();
+          
             LoadBooks();
         }
 
@@ -39,11 +41,18 @@ namespace Sapphire_Book_Ryazantsev
             IsAdmin = userRole == "Admin";
             LoadBooks();
             Loaded += Page_Loaded; // Обновляем интерфейс после загрузки страницы
+
         }
 
         private void LoadBooks()
         {
-            var allBooksFromDb = DataBase1Entities.GetContext().Books.ToList();
+            var context = DataBase1Entities.GetContext();
+            var allBooksFromDb = context.Books
+                .Include(b => b.Author)    
+                .Include(b => b.Genre)
+                .Include(b => b.Shelf)
+                .ToList();
+
             _allBooks = new ObservableCollection<Books>(allBooksFromDb);
             _filteredBooks = new ObservableCollection<Books>(_allBooks);
             lwProducts.ItemsSource = _filteredBooks;
@@ -63,7 +72,7 @@ namespace Sapphire_Book_Ryazantsev
 
 
 
-    
+
         private void lwProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lwProducts.SelectedItem != null)
@@ -71,11 +80,16 @@ namespace Sapphire_Book_Ryazantsev
                 var selectedBook = lwProducts.SelectedItem as Books;
                 if (selectedBook != null)
                 {
+                    
                     BookDetails bookDetails = new BookDetails(selectedBook);
                     bookDetails.Show();
                 }
             }
         }
+
+
+
+
 
         private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -83,7 +97,7 @@ namespace Sapphire_Book_Ryazantsev
 
             var filtered = _allBooks.Where(b =>
                 b.Name.ToLower().Contains(searchText) ||
-                b.Author.ToLower().Contains(searchText) ||
+                b.AuthorName.ToLower().Contains(searchText) ||
                 b.Category.ToLower().Contains(searchText));
 
             _filteredBooks.Clear();
@@ -129,16 +143,22 @@ namespace Sapphire_Book_Ryazantsev
             if (MessageBox.Show($"Вы уверены, что хотите удалить {selectedBooks.Count} книг?", "Подтверждение",
                                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                var context = DataBase1Entities.GetContext();
-
-                foreach (var book in selectedBooks)
+                try
                 {
-                    context.Books.Remove(book);
+                    var context = DataBase1Entities.GetContext();
+
+                    foreach (var book in selectedBooks)
+                    {
+                        context.Books.Remove(book);
+                    }
+
+                    context.SaveChanges();
+                    LoadBooks(); // Перезагрузите данные вместо UpdateList()
                 }
-
-                context.SaveChanges();
-
-                UpdateList(); // Обновляем список книг
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при удалении: {ex.Message}");
+                }
             }
         }
 
@@ -155,36 +175,21 @@ namespace Sapphire_Book_Ryazantsev
                 if (!string.IsNullOrEmpty(newBook.ImagePath) && File.Exists(newBook.ImagePath))
                 {
                     string projectDir = AppDomain.CurrentDomain.BaseDirectory;
-                    string resourcesDir = System.IO.Path.Combine(projectDir, "Resources");
-
+                    string resourcesDir = Path.Combine(projectDir, "Resources");
                     if (!Directory.Exists(resourcesDir))
                     {
                         Directory.CreateDirectory(resourcesDir);
                     }
-
-                    string fileName = System.IO.Path.GetFileName(newBook.ImagePath);
+                    string fileName = Path.GetFileName(newBook.ImagePath);
                     string destinationPath = Path.Combine(resourcesDir, fileName);
 
-                    // Только если файла ещё нет в Resources — копируем
-                    if (!File.Exists(destinationPath))
-                    {
-                        try
-                        {
-                            File.Copy(newBook.ImagePath, destinationPath);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show($"Ошибка копирования файла: {ex.Message}");
-                        }
-                    }
-
-                    // Сохраняем только имя файла, не весь путь
-                    newBook.ImagePath = fileName;
+                   
                 }
 
                 context.Books.Add(newBook);
                 context.SaveChanges();
 
+                // Добавляем книгу в коллекции
                 _allBooks.Add(newBook);
                 _filteredBooks.Add(newBook);
             }
@@ -198,7 +203,7 @@ namespace Sapphire_Book_Ryazantsev
 
             var filtered = _allBooks.Where(b =>
                 b.Name.ToLower().Contains(searchText) ||
-                b.Author.ToLower().Contains(searchText) ||
+                (b.AuthorName != null && b.AuthorName.ToLower().Contains(searchText)) || // Используем AuthorName
                 b.Category.ToLower().Contains(searchText));
 
             _filteredBooks.Clear();

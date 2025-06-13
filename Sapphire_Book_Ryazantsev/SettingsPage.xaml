@@ -40,10 +40,10 @@
         </GroupBox>
 
         <!-- Размер шрифта -->
-        <GroupBox Header="Размер шрифта" Margin="0,0,0,10" Grid.Row="1">
-            <ComboBox x:Name="FontSizeSelector" 
+        <GroupBox Header="Размер плитки" Margin="0,0,0,10" Grid.Row="1">
+            <ComboBox x:Name="SizeSelector" 
                       SelectedIndex="2"
-                      SelectionChanged="FontSizeSelector_SelectionChanged">
+                      SelectionChanged="SizeSelector_SelectionChanged">
                 <ComboBoxItem Content="Маленький (10pt)" Tag="10"/>
                 <ComboBoxItem Content="Обычный (12pt)" Tag="12"/>
                 <ComboBoxItem Content="Крупный (14pt)" Tag="14"/>

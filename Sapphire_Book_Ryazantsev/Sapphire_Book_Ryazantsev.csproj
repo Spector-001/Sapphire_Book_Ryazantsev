@@ -100,11 +100,17 @@
     <Compile Include="AddEditBookWindow.xaml.cs">
       <DependentUpon>AddEditBookWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Author.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Avtorization.xaml.cs">
       <DependentUpon>Avtorization.xaml</DependentUpon>
     </Compile>
     <Compile Include="BookDetails.xaml.cs">
       <DependentUpon>BookDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BookLoans.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Books.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
@@ -125,13 +131,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataBase.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Genre.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Manager.cs" />
-    <Compile Include="OrderItems.cs">
-      <DependentUpon>DataBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Orders.cs">
-      <DependentUpon>DataBase.tt</DependentUpon>
-    </Compile>
     <Compile Include="Page1Test.xaml.cs">
       <DependentUpon>Page1Test.xaml</DependentUpon>
     </Compile>
@@ -140,9 +143,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Readers.cs">
-      <DependentUpon>DataBase.tt</DependentUpon>
-    </Compile>
     <Compile Include="RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
@@ -150,10 +150,7 @@
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>DataBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
+    <Compile Include="Shelf.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
@@ -236,6 +233,10 @@
     <Resource Include="Logo_Sapphire.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Берсерк.png" />
+    <Resource Include="Resources\Background.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="DataBase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DataBase.edmx</DependentUpon>
@@ -246,8 +247,13 @@
       <DependentUpon>DataBase.edmx</DependentUpon>
       <LastGenOutput>DataBase.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resources\Берсерк.png" />
-    <Resource Include="Resources\Background.png" />
+    <Resource Include="Resources\Акира.jpg" />
+    <Resource Include="Resources\АтакаТитановjpg.jpg" />
+    <Resource Include="Resources\ТетрадьСмерти.jpg" />
+    <Resource Include="Resources\Наруто.jpg" />
+    <Resource Include="Resources\ИграПрестолов.jpg" />
+    <Resource Include="Resources\Дюна.jpg" />
+    <Resource Include="Resources\Nactolgia228.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

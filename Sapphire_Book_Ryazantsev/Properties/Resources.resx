@@ -148,8 +148,17 @@
   <data name="LogoSettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LogoSettings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Nactolgia228" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Nactolgia228.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="_1984" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1984.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Акира" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Акира.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="АтакаТитановjpg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\АтакаТитановjpg.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Берсерк" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Берсерк.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,11 +166,20 @@
   <data name="Войнаимир" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Войнаимир.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Дюна" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Дюна.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ИграПрестолов" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ИграПрестолов.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="КоллекцияУжасовДзюндзиИто" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\КоллекцияУжасовДзюндзиИто.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="МастериМаргарита" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\МастериМаргарита.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Наруто" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Наруто.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="НочиЖивыхМертвецов" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\НочиЖивыхМертвецов.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,7 +190,7 @@
   <data name="ПсихоПаспорт" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ПсихоПаспорт.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ТетрадьСмерти" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ТетрадьСмерти.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ТетрадьСмерти1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ТетрадьСмерти.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

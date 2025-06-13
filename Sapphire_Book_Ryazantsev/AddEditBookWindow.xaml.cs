@@ -16,30 +16,55 @@ using System.IO;
 
 namespace Sapphire_Book_Ryazantsev
 {
-    /// <summary>
-    /// Логика взаимодействия для AddEditBookWindow.xaml
-    /// </summary>
+    
     public partial class AddEditBookWindow : Window
     {
-
+        private DataBase1Entities _context = DataBase1Entities.GetContext();
         public Books CurrentBook { get; set; }
+        public List<Author> Authors { get; set; }
+        public List<Genre> Genres { get; set; }
+        public List<Shelf> Shelves { get; set; }
+
+      
 
         public AddEditBookWindow(Books book = null)
         {
             InitializeComponent();
 
+            // Загрузка справочников
+            Authors = _context.Author.ToList();
+            Genres = _context.Genre.ToList();
+            Shelves = _context.Shelf.ToList();
+
+            cbAuthor.ItemsSource = Authors;
+            cbGenre.ItemsSource = Genres;
+            cbShelf.ItemsSource = Shelves;
+
             if (book != null)
             {
                 CurrentBook = book;
+
+                // Установка выбранных значений
+                cbAuthor.SelectedValue = CurrentBook.AuthorID;
+                cbGenre.SelectedValue = CurrentBook.GenreID;
+                cbShelf.SelectedValue = CurrentBook.ShelfID;
             }
             else
             {
                 CurrentBook = new Books();
+
+                // Значения по умолчанию
+                if (Authors.Any()) cbAuthor.SelectedIndex = 0;
+                if (Genres.Any()) cbGenre.SelectedIndex = 0;
+                if (Shelves.Any()) cbShelf.SelectedIndex = 0;
             }
 
-            this.DataContext = CurrentBook;
-            UpdateImagePreview(); // Загружаем превью, если книга редактируется
+            DataContext = CurrentBook;
+            UpdateImagePreview();
         }
+
+          
+        
 
         private void UpdateImagePreview()
         {
@@ -74,6 +99,7 @@ namespace Sapphire_Book_Ryazantsev
             };
 
             if (dialog.ShowDialog() == true)
+
             {
                 string selectedFilePath = dialog.FileName;
                 string fileName = Path.GetFileName(selectedFilePath);
@@ -114,41 +140,45 @@ namespace Sapphire_Book_Ryazantsev
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            // Привязка выбранных значений
+            CurrentBook.AuthorID = (int)cbAuthor.SelectedValue;
+            CurrentBook.GenreID = (int)cbGenre.SelectedValue;
+            CurrentBook.ShelfID = (int)cbShelf.SelectedValue;
+
             if (string.IsNullOrWhiteSpace(CurrentBook.Name) ||
-         string.IsNullOrWhiteSpace(CurrentBook.Author) ||
-         string.IsNullOrWhiteSpace(CurrentBook.Category))
+                cbAuthor.SelectedValue == null ||
+                string.IsNullOrWhiteSpace(CurrentBook.Category))
             {
                 MessageBox.Show("Заполните обязательные поля: Название, Автор, Категория");
                 return;
             }
 
-            var context = DataBase1Entities.GetContext();
-
-            if (CurrentBook.ProductID == 0)
-            {
-                context.Books.Add(CurrentBook);
-            }
-            else
-            {
-                var existingBook = context.Books.Find(CurrentBook.ProductID);
-                if (existingBook != null)
-                {
-                    existingBook.Name = CurrentBook.Name;
-                    existingBook.Author = CurrentBook.Author;
-                    existingBook.Category = CurrentBook.Category;
-                    existingBook.Genre = CurrentBook.Genre;
-                    existingBook.Description = CurrentBook.Description;
-                    existingBook.Shelf = CurrentBook.Shelf;
-                    existingBook.Status = CurrentBook.Status;
-                    existingBook.ImagePath = CurrentBook.ImagePath;
-                }
-            }
-
             try
             {
-                context.SaveChanges();
-                this.DialogResult = true;
-                this.Close();
+                if (CurrentBook.ProductID == 0) // Новая книга
+                {
+                    _context.Books.Add(CurrentBook);
+                }
+                else // Редактирование существующей
+                {
+                    var existingBook = _context.Books.Find(CurrentBook.ProductID);
+                    if (existingBook != null)
+                    {
+                        // Обновляем свойства
+                        existingBook.Name = CurrentBook.Name;
+                        existingBook.AuthorID = CurrentBook.AuthorID;
+                        existingBook.Category = CurrentBook.Category;
+                        existingBook.GenreID = CurrentBook.GenreID;
+                        existingBook.Description = CurrentBook.Description;
+                        existingBook.ShelfID = CurrentBook.ShelfID;
+                        existingBook.Status = CurrentBook.Status;
+                        existingBook.ImagePath = CurrentBook.ImagePath;
+                    }
+                }
+
+                _context.SaveChanges();
+                DialogResult = true;
+                Close();
             }
             catch (Exception ex)
             {
